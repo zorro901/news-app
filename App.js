@@ -6,7 +6,7 @@ import dammyArticles from "./dammies/articles.json"
 import Constants from 'expo-constants'
 import axios from 'axios'
 
-export default function App() {
+export default App = () => {
   const [articles, setArticles] = useState([])
   const URL = `https://newsapi.org/v2/top-headlines?country=jp&apiKey=${Constants.manifest.extra.newsApiKey}`
   useEffect(() => {
