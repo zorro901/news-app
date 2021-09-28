@@ -1,18 +1,18 @@
 import React from 'react'
 import { StyleSheet, SafeAreaView, Text } from 'react-native'
-
+import { WebView } from 'react-native-webview'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: '#fff'
   }
 })
 
 export const ArticleScreen = () => {
   return (
-    <SafeAreaView style={StyleSheet.container}>
-      <Text>This is Article Screen</Text>
+    <SafeAreaView style={styles.container}>
+      <WebView source={{ uri: 'https://expo.io' }}/>
     </SafeAreaView>
   )
 }
