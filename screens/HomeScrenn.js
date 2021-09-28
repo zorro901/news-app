@@ -5,7 +5,7 @@ import ListItems from '../components/ListItems'
 import Constants from 'expo-constants'
 import axios from 'axios'
 
-export const HomeScreen = () => {
+export const HomeScreen = ({ navigation }) => {
   const [articles, setArticles] = useState([])
   const URL = `https://newsapi.org/v2/top-headlines?country=jp&apiKey=${Constants.manifest.extra.newsApiKey}`
   useEffect(() => {
@@ -27,6 +27,7 @@ export const HomeScreen = () => {
           imageUrl={item.urlToImage}
           title={item.title}
           author={item.author}
+          onPress={() => navigation.navigate("Article")}
         />
       )}
                 keyExtractor={(item, index) => index.toString()}

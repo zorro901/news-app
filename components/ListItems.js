@@ -1,6 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
-import { TouchableOpacity } from 'react-native-web'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 
 const styles = StyleSheet.create({
   itemContainer: {
@@ -29,25 +28,25 @@ const styles = StyleSheet.create({
 
 const ListItem = ({ imageUrl, title, author, onPress }) => {
   return (
-    //<TouchableOpacity style={styles.itemContainer} onPress={onPress}>
-    <View
-      style={styles.itemContainer}>
-      <View style={styles.leftContainer}>
-        {!!imageUrl && (
-          <Image
-            style={{ width: 100, height: 100 }}
-            source={{ uri: imageUrl }}/>
-        )}
+    <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
+      <View
+        style={styles.itemContainer}>
+        <View style={styles.leftContainer}>
+          {!!imageUrl && (
+            <Image
+              style={{ width: 100, height: 100 }}
+              source={{ uri: imageUrl }}/>
+          )}
+        </View>
+        <View style={styles.rightContainer}>
+          <Text numberOfLines={3} style={styles.text}>
+            {title}
+          
+          </Text>
+          <Text style={styles.subText}>{author}</Text>
+        </View>
       </View>
-      <View style={styles.rightContainer}>
-        <Text numberOfLines={3} style={styles.text}>
-          {title}
-        
-        </Text>
-        <Text style={styles.subText}>{author}</Text>
-      </View>
-    </View>
-    //</TouchableOpacity>
+    </TouchableOpacity>
   )
 }
 
