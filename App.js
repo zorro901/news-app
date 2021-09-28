@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, FlatList, SafeAreaView } from 'react-native'
 import ListItems from './components/ListItems'
 import dammyArticles from "./dammies/articles.json"
+import Constants from 'expo-constants'
 
 export default function App() {
   const [articles, setArticles] = useState([])
   useEffect(() => {
+    alert(Constants.manifest.extra.newsApiKey)
     const timer = setTimeout(() => {
       setArticles(dammyArticles)
     }, 2000)
