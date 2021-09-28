@@ -1,10 +1,17 @@
 import { StatusBar } from 'expo-status-bar'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, View, FlatList, SafeAreaView } from 'react-native'
 import ListItems from './components/ListItems'
-import articles from "./dammies/articles.json"
+import dammyArticles from "./dammies/articles.json"
 
 export default function App() {
+  const [articles, setArticles] = useState([])
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setArticles(dammyArticles)
+    }, 2000)
+    return () => clearTimeout(timer)
+  }, [])
   return (
     <SafeAreaView style={styles.container}>
       <FlatList data={articles} renderItem={({ item }) => (
