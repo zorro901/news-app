@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, SafeAreaView, Text, TouchableOpacity } from 'react-native'
 import { WebView } from 'react-native-webview'
 import { useDispatch, useSelector } from 'react-redux'
 import { addClip, deleteClip } from '../store/actions/user'
 import ClipButton from '../components/ClipButton'
+import { Loading } from '../components/Loading'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +14,8 @@ const styles = StyleSheet.create({
 })
 
 export const ArticleScreen = ({ route }) => {
+  const [loading, setLoading] = useState(false)
+  
   const { article } = route.params
   
   const dispatch = useDispatch()
@@ -29,14 +32,18 @@ export const ArticleScreen = ({ route }) => {
       dispatch(deleteClip({ clip: article }))
     } else {
       dispatch(addClip({ clip: article }))
-      
     }
   }
   
   return (
     <SafeAreaView style={styles.container}>
       <ClipButton onPress={toggleClip} enabled={isClipped()}/>
-      <WebView source={{ uri: article.url }}/>
+      <WebView
+        source={{ uri: article.url }}
+        startInLoadingState={true}
+        renderLoading={() => <Loading/>}
+      />
     </SafeAreaView>
+  
   )
 }
