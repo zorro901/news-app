@@ -53,8 +53,8 @@ export const AppNavigaotor = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator screenOptions={screenOption}>
-        <Tab.Screen name="Home" component={HomeStack} options={{ headerShown: false }}/>
-        <Tab.Screen name="Clip" component={ClipStack} options={{ headerShown: false }}/>
+        <Tab.Screen name="Home" component={HomeStack}/>
+        <Tab.Screen name="Clip" component={ClipStack}/>
       </Tab.Navigator>
     </NavigationContainer>
   )
